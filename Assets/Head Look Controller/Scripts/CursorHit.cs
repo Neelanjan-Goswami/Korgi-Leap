@@ -3,11 +3,12 @@ using System.Collections;
 
 public class CursorHit : MonoBehaviour {
 	
-	public HeadLookController headLook;
+	public HeadLookController headLook;//the corgi dog model
 	private float offset = 1.5f;
 	
 	// Update is called once per frame
 	void LateUpdate () {
+        /*
 		if (Input.GetKey(KeyCode.UpArrow))
 			offset += Time.deltaTime;
 		if (Input.GetKey(KeyCode.DownArrow))
@@ -18,7 +19,7 @@ public class CursorHit : MonoBehaviour {
 		if (Physics.Raycast(cursorRay, out hit)) {
 			transform.position = hit.point + offset * Vector3.up;
 		}
-		
+		*/
 		headLook.target = transform.position;
 	}
 }

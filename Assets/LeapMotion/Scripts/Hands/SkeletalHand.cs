@@ -16,10 +16,13 @@ using Leap;
 public class SkeletalHand : HandModel {
 
   protected const float PALM_CENTER_OFFSET = 0.0150f;
+  //private GameObject trackObj;
 
   void Start() {
     // Ignore collisions with self.
     Leap.Utils.IgnoreCollisions(gameObject, gameObject);
+        
+    //trackObj = GameObject.Find("TargetFollow");
 
     for (int i = 0; i < fingers.Length; ++i) {
       if (fingers[i] != null) {
@@ -31,7 +34,10 @@ public class SkeletalHand : HandModel {
   /** Updates the hand and its component parts by setting their positions and rotations. */
   public override void UpdateHand() {
     SetPositions();
+        //print("set");
+    //trackObj.transform.position = palm.position;
   }
+
 
   protected Vector3 GetPalmCenter() {
     Vector3 offset = PALM_CENTER_OFFSET * Vector3.Scale(GetPalmDirection(), transform.localScale);
@@ -46,6 +52,7 @@ public class SkeletalHand : HandModel {
 
     if (palm != null) {
       palm.position = GetPalmCenter();
+      //print(palm.position);
       palm.rotation = GetPalmRotation();
     }
 
