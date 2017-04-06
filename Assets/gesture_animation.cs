@@ -11,6 +11,7 @@ public class gesture_animation : MonoBehaviour {
     private int prevStatus;
     private float startTime;
     private float currentTime;
+    Controller controller;
 
     // Use this for initialization
     void Start () {
@@ -19,7 +20,11 @@ public class gesture_animation : MonoBehaviour {
         rand = 0;
         prevStatus = 0;
         startTime = 0;
-	}
+        controller = new Controller();
+        controller.EnableGesture(Gesture.GestureType.TYPECIRCLE);
+
+        controller.EnableGesture(Gesture.GestureType.TYPESWIPE);
+    }
 
     private bool IsHand(Collider other)
     {
@@ -57,6 +62,23 @@ public class gesture_animation : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
+        Frame frame = controller.Frame();
+        GestureList gestures = frame.Gestures(frame);
+        for (int i = 0; i < gestures.Count; i++)
+        {
+            Gesture gesture = gestures[i];
+            if (gesture.Type == Gesture.GestureType.TYPECIRCLE)
+            {
+                print("CIRCLE gesture");
+            }
+
+            if (gesture.Type == Gesture.GestureType.TYPESWIPE)
+            {
+                SwipeGesture swipe = new SwipeGesture(gesture);
+                print("SWIPE gesture");
+            }
+        }
+
         status = anim.GetInteger("status");
         longtime = anim.GetInteger("longtime");
         currentTime = Time.time;
