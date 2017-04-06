@@ -40,7 +40,7 @@ public class MoveToPalm : MonoBehaviour
                     Vector3 unityPosition = position.ToUnityScaled(false);
                     // print(unityPosition);
                     Vector3 worldPosition = hc.transform.TransformPoint(unityPosition);
-                    print(worldPosition);
+                    //print(worldPosition);
                     Leap.Vector norm = hand.PalmNormal;
                     Vector3 unityNorm = norm.ToUnityScaled(false);
                     followTarget.transform.position = worldPosition + unityNorm * (followTarget.transform.localScale.y * .5f + .02f);
