@@ -7,11 +7,13 @@ public class gesture_animation : MonoBehaviour {
     public Animator anim;
     private int status;
     private int longtime;// to control the random movements if stays in long time
+    private int prevStatus;
     private HandController hc;
 
     // Use this for initialization
     void Start () {
         anim = GetComponent<Animator>();
+        prevStatus = 0;
 	}
 
     private bool IsHand(Collider other)
@@ -27,8 +29,21 @@ public class gesture_animation : MonoBehaviour {
         if (IsHand(other))
         {
             print("Yay! A hand collided!");
+            if (status != 2) { 
+                prevStatus = status; // keep the previous status
+                print("Keep previous status "+prevStatus.ToString());
+            }
+            anim.SetInteger("status", 2);//change to lay
         }
-        print("haha");
+    }
+
+    void OnTriggerExit(Collider other)
+    {
+        if (IsHand(other))
+        {
+            print("Hand removed");
+            anim.SetInteger("status", 0); // change to previous status(sit/idle)
+        }
     }
 
     // Update is called once per frame
