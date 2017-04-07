@@ -1,6 +1,7 @@
 fileFormatVersion: 2
-guid: d482e78ed2bd945a2a986c2ec0f2c553
-timeCreated: 1432850151
+guid: 990583add1c88a14586ea5e226b31d5c
+folderAsset: yes
+timeCreated: 1491100682
 licenseType: Free
 PluginImporter:
   serializedVersion: 1
@@ -10,16 +11,21 @@ PluginImporter:
   isOverridable: 0
   platformData:
     Any:
-      enabled: 1
+      enabled: 0
       settings: {}
     Editor:
-      enabled: 0
+      enabled: 1
       settings:
         DefaultValueInitialized: true
-    WindowsStoreApps:
-      enabled: 0
-      settings:
-        CPU: AnyCPU
+    OSXIntel:
+      enabled: 1
+      settings: {}
+    OSXIntel64:
+      enabled: 1
+      settings: {}
+    OSXUniversal:
+      enabled: 1
+      settings: {}
   userData: 
   assetBundleName: 
   assetBundleVariant: 
