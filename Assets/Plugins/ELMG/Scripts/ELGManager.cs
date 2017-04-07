@@ -54,7 +54,7 @@ public class ELGManager : MonoBehaviour {
 		
 	}
 
-    void onCircleGestureRecognized()
+    void onPullGestureRecognized()
     {
         status = anim.GetInteger("status");
         if (status == 1)
@@ -70,9 +70,27 @@ public class ELGManager : MonoBehaviour {
         }
         anim.SetInteger("status", status);
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    void onCircleGestureRecognized()
+    {
+        status = anim.GetInteger("status");
+        if (status == 4)
+        {
+            status = 0;
+        }
+        else if (status == 0)
+        {
+            status = 4;
+        }
+        else
+        {
+            print("not valid staus yet");
+        }
+        anim.SetInteger("status", status);
+    }
+
+    // Update is called once per frame
+    void Update () {
 		mFrame = leapController.Frame ();
 		int fingerCount = 0;
 		if(numbersGestureRegistered || closeFistRegistered || openFistRegistered ||
@@ -293,6 +311,7 @@ public class ELGManager : MonoBehaviour {
 		}
 		pullRestTime = Time.time;
 		RecordNewGesture(-(int)EasyLeapGestureType.PULL,EasyLeapGestureState.STATESTART,EasyLeapGestureState.STATEUPDATE,EasyLeapGestureType.PULL,-1,mFrame.Hands[0].StabilizedPalmPosition);
+        onPullGestureRecognized();
 		
 	}
 	private void CloseFistGestureRecognised(EasyLeapGestureState state) {
