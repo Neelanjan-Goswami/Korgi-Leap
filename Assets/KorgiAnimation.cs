@@ -39,12 +39,7 @@ public class KorgiAnimation : MonoBehaviour {
     {
         if (IsHand(other))
         {
-            print("Yay! A hand collided!");
-            if (status != 2) { 
-                prevStatus = status; // keep the previous status
-                print("Keep previous status "+prevStatus.ToString());
-            }
-            startTime = currentTime;
+            //startTime = currentTime;
             status = 2;
             anim.SetInteger("status", status);//change to lay
         }
@@ -56,40 +51,23 @@ public class KorgiAnimation : MonoBehaviour {
         {
             print("Hand removed");
             status = 0;
-            anim.SetInteger("status", 0); // change to previous status(sit/idle)
-            startTime = currentTime;
+            anim.SetInteger("status", status);
+            //startTime = currentTime;
         }
     }
 
     // Update is called once per frame
     void Update () {
 
-        /*
-        Frame frame = controller.Frame();
-        GestureList gestures = frame.Gestures(frame);
-        for (int i = 0; i < gestures.Count; i++)
-        {
-            Gesture gesture = gestures[i];
-            if (gesture.Type == Gesture.GestureType.TYPECIRCLE)
-            {
-                print("CIRCLE gesture");
-            }
-
-            if (gesture.Type == Gesture.GestureType.TYPESWIPE)
-            {
-                SwipeGesture swipe = new SwipeGesture(gesture);
-                print("SWIPE gesture");
-            }
-        }*/
-
         status = anim.GetInteger("status");
-        longtime = anim.GetInteger("longtime");
-        currentTime = Time.time;
+        //longtime = anim.GetInteger("longtime");
+        //currentTime = Time.time;
 
         switch (status)
         {
             case 0:
-                print("common idle");
+                print("stand idle");
+                /*
                 if (currentTime - startTime > 7)
                 {
                     //anim.Play("CorgiIdleLong");
@@ -107,7 +85,7 @@ public class KorgiAnimation : MonoBehaviour {
                         anim.SetInteger("longtime", longtime);
                         anim.SetInteger("rand", rand);
                     }
-                }
+                }*/
                 break;
 
             case 1:
