@@ -18,7 +18,10 @@ namespace FrostweepGames.SpeechRecognition.Google.Cloud.Examples
 
         private bool recordButtonPressed;
         private bool recording;
-
+        public GameObject dog;
+        private Animator anim;
+        private int status;
+        private int prevStatus;
 
         private void Start()
         {
@@ -36,8 +39,10 @@ namespace FrostweepGames.SpeechRecognition.Google.Cloud.Examples
 
             _languageDropdown.ClearOptions();
 
+            anim = dog.GetComponent<Animator>();
             recordButtonPressed = false;
             recording = false;
+
 
             for (int i = 0; i < 43; i++)
             {
@@ -64,11 +69,14 @@ namespace FrostweepGames.SpeechRecognition.Google.Cloud.Examples
             {
                 ApplySpeechContextPhrases();
                 print("Stop recording");
+                _speechRecognitionResult.text = "Analyzing your words";
                 //_stopRecordButton.interactable = false;
                 //_speechRecognitionState.color = Color.yellow;
                 _speechRecognition.StopRecord();
                 recording = false;
             }
+            status = anim.GetInteger("status");
+
         }
 
         public void onPointerDownRecordButton()
@@ -98,7 +106,7 @@ namespace FrostweepGames.SpeechRecognition.Google.Cloud.Examples
         private void ApplySpeechContextPhrases()
         {
             //add context phrases
-            string[] phrases = { "sit down", "stand up", "lay down", "bark","korgi"};
+            string[] phrases = { "sit down", "stand up", "lay down", "bark","stop","Korgi"};
             _speechRecognition.SetSpeechContext(phrases);
         }
 
@@ -109,13 +117,57 @@ namespace FrostweepGames.SpeechRecognition.Google.Cloud.Examples
             _startRecordButton.interactable = true;
         }
 
+        private void changePose(string pose)
+        {
+            switch (pose)
+            {
+                case "sit down":
+                    prevStatus = status;
+                    status = 1;
+                    anim.SetInteger("status", status);
+                    break;
+                case "sit":
+                    prevStatus = status;
+                    status = 1;
+                    anim.SetInteger("status", status);
+                    break;
+                case "stand up":
+                    prevStatus = status;
+                    status = 0;
+                    anim.SetInteger("status", status);
+                    break;
+                case "lay down":
+                    prevStatus = status;
+                    status = 2;
+                    anim.SetInteger("status", status);
+                    break;
+                case "bark":
+                    prevStatus = status;
+                    status = 4;
+                    anim.SetInteger("status", status);
+                    break;
+                case "korgi":
+                    prevStatus = status;
+                    status = 4;
+                    anim.SetInteger("status", status);
+                    break;
+                case "stop":
+                    status = prevStatus;
+                    anim.SetInteger("status", status);
+                    break;
+            }
+        }
+
         private void SpeechRecognizedSuccessEventHandler(RecognitionResponse obj)
         {
             _startRecordButton.interactable = true;
 
             if (obj != null && obj.results.Length > 0)
             {
-                _speechRecognitionResult.text = "You said: " + obj.results[0].alternatives[0].transcript;
+                string bestMatch = obj.results[0].alternatives[0].transcript;
+                _speechRecognitionResult.text = "You said: " + bestMatch;
+
+                changePose(bestMatch);
 
                 string other = "\nOr: ";
 

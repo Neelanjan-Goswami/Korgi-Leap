@@ -1,7 +1,6 @@
 {
   "ExpandedNodes": [
     "",
-    "\\FrostweepGames",
     "\\FrostweepGames\\GoogleCloudSpeechRecognition",
     "\\FrostweepGames\\GoogleCloudSpeechRecognition\\Examples",
     "\\FrostweepGames\\GoogleCloudSpeechRecognition\\Scripts",
@@ -11,6 +10,6 @@
     "\\FrostweepGames\\GoogleCloudSpeechRecognition\\Scripts\\Utilites",
     "\\Scenes"
   ],
-  "SelectedNode": "\\Scenes\\main.unity",
+  "SelectedNode": "\\HandTracker.cs",
   "PreviewInSolutionExplorer": false
 }
