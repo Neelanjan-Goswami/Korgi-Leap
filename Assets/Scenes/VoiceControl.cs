@@ -155,6 +155,18 @@ namespace FrostweepGames.SpeechRecognition.Google.Cloud.Examples
                     status = prevStatus;
                     anim.SetInteger("status", status);
                     break;
+                // sample for Chinese(Mandarin)
+                case "坐下":
+                    prevStatus = status;
+                    status = 1;
+                    anim.SetInteger("status", status);
+                    break;
+                // sample for French
+                case "asseyez-vous":
+                    prevStatus = status;
+                    status = 1;
+                    anim.SetInteger("status", status);
+                    break;
             }
         }
 
