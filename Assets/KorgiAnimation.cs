@@ -66,7 +66,7 @@ public class KorgiAnimation : MonoBehaviour {
         switch (status)
         {
             case 0:
-                print("stand idle");
+                //print("stand idle");
                 /*
                 if (currentTime - startTime > 7)
                 {
@@ -89,11 +89,11 @@ public class KorgiAnimation : MonoBehaviour {
                 break;
 
             case 1:
-                print("sit idle");
+                //print("sit idle");
                 break;
 
             case 2:
-                print("lay idle");
+                //print("lay idle");
                 break;
         }
 	}

@@ -1,0 +1,16 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\FrostweepGames",
+    "\\FrostweepGames\\GoogleCloudSpeechRecognition",
+    "\\FrostweepGames\\GoogleCloudSpeechRecognition\\Examples",
+    "\\FrostweepGames\\GoogleCloudSpeechRecognition\\Scripts",
+    "\\FrostweepGames\\GoogleCloudSpeechRecognition\\Scripts\\Data",
+    "\\FrostweepGames\\GoogleCloudSpeechRecognition\\Scripts\\Interfaces",
+    "\\FrostweepGames\\GoogleCloudSpeechRecognition\\Scripts\\Settings",
+    "\\FrostweepGames\\GoogleCloudSpeechRecognition\\Scripts\\Utilites",
+    "\\Scenes"
+  ],
+  "SelectedNode": "\\Scenes\\main.unity",
+  "PreviewInSolutionExplorer": false
+}
